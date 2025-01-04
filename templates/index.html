@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PantryPal - Smart Grocery Management</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">
+          <i data-lucide="shopping-basket"></i>
+          <span>PantryPal</span>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it Works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="inventory"
+            ><button class="btn-primary">Get Started</button></a
+          >
+        </div>
+        <button class="mobile-menu" aria-label="Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Smart Grocery Management for Modern Households</h1>
+            <p>
+              Take control of your pantry, reduce food waste, and streamline
+              your shopping with our intelligent grocery management system.
+            </p>
+            <div class="hero-buttons">
+              <button class="btn-primary">
+                Start Free Trial
+                <i data-lucide="chevron-right"></i>
+              </button>
+              <button class="btn-secondary">Watch Demo</button>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&q=80&w=2940"
+              alt="Organized pantry"
+            />
+            <div class="stats-card">
+              <i data-lucide="trending-up"></i>
+              <span>30% less food waste</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search Section -->
+      <section class="search-section">
+        <div class="search-container">
+          <i data-lucide="search"></i>
+          <input type="text" placeholder="Search for items in your pantry..." />
+          <button class="btn-primary">Search</button>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features">
+        <div class="features-grid">
+          <div class="feature-card">
+            <i data-lucide="list"></i>
+            <h3>Smart Inventory</h3>
+            <p>
+              Automatically track your groceries and get notifications when
+              items are running low.
+            </p>
+          </div>
+          <div class="feature-card">
+            <i data-lucide="clock"></i>
+            <h3>Expiry Tracking</h3>
+            <p>
+              Never waste food again with smart expiry date tracking and timely
+              reminders.
+            </p>
+          </div>
+          <div class="feature-card">
+            <i data-lucide="shield"></i>
+            <h3>Budget Protection</h3>
+            <p>
+              Stay within budget with smart shopping lists and price tracking
+              features.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Active Users</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$2M+</div>
+            <div class="stat-label">Saved on Groceries</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">30%</div>
+            <div class="stat-label">Less Food Waste</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4.9/5</div>
+            <div class="stat-label">User Rating</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-logo">
+            <i data-lucide="shopping-basket"></i>
+            <span>© 2024 PantryPal. All rights reserved.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'main.js'%}"></script>
+  </body>
+</html>

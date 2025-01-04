@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics - GroceryManager</title>
+    <link rel="stylesheet" href="{% static 'reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'stats.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">
+          <i data-lucide="shopping-basket"></i>
+          <span>PantryPal</span>
+        </div>
+        <div class="nav-links">
+          <a href="inventory">Inventory</a>
+          <a href="#how-it-works">How it Works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="home"><button class="btn-primary">Home</button></a>
+        </div>
+        <button class="mobile-menu" aria-label="Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </nav>
+
+    <main class="statistics">
+      <div class="container">
+        <div class="stats-header">
+          <h1>Shopping Statistics</h1>
+          <p>Track your grocery spending and habits</p>
+        </div>
+
+        <div class="stats-grid">
+          <!-- Statistics cards will be dynamically inserted here -->
+        </div>
+
+        <div class="vendor-stats">
+          <h2>Vendor Statistics</h2>
+          <!-- Vendor statistics table will be dynamically inserted here -->
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h3>GroceryManager</h3>
+            <p>Making grocery management simple and efficient.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Features</h4>
+            <ul>
+              <li><a href="#">Shopping Lists</a></li>
+              <li><a href="#">Inventory Tracking</a></li>
+              <li><a href="#">Smart Reminders</a></li>
+              <li><a href="#">Budget Analysis</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <ul>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year"></span> GroceryManager. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="{% static 'statistics.js' %}"></script>
+    <script src="{% static 'navigation.js' %}"></script>
+    <script src="{% static 'main.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PantryPal - Inventory Management</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'inventory.css' %}" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">
+          <i data-lucide="shopping-basket"></i>
+          <span>PantryPal</span>
+        </div>
+        <div class="nav-links">
+          <a href="home">Home</a>
+          <a href="statistics" class="active">Statistics</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="inventory-container">
+      <div class="inventory-header">
+        <h1>Household Inventory</h1>
+        <button class="btn-primary" id="addItemBtn">
+          <i data-lucide="plus"></i>
+          Add Item
+        </button>
+      </div>
+
+      <div class="inventory-stats">
+        <div class="stat-card">
+          <i data-lucide="package"></i>
+          <div>
+            <h3>Total Items</h3>
+            {% if total_val %}
+            <p id="totalItems">{{ inventory|length }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="stat-card">
+          <i data-lucide="dollar-sign"></i>
+          <div>
+            {% if total_val %}
+            <h3>Total Value</h3>
+            <p id="totalValue">₹{{total_val|floatformat:2}}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="inventory-table-container">
+        <div class="table-actions">
+          <div class="date-form">
+            <form action="" method="GET">
+              <label for="dateInput">Select Date:</label>
+              <input type="date" id="dateInput" name="date" required />
+              <button type="submit" class="btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="sort-options">
+            <label>Sort by:</label>
+            <select id="sortSelect">
+              <option value="name">Name</option>
+              <option value="quantity">Quantity</option>
+              <option value="price">Price</option>
+            </select>
+          </div>
+        </div>
+
+        <table class="inventory-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Vendor</th>
+              <th>Item Name</th>
+              <th>Item Type</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryList">
+            {% for item in inventory %}
+            <tr>
+              <td>{{ item.date|date:"F j, Y" }}</td>
+              <td>{{ item.vendor }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{item.typeofitem}}</td>
+              <td>{{ item.quantity }}</td>
+              <td>₹{{ item.price|floatformat:2 }}</td>
+              <td>₹{{ item.total|floatformat:2 }}</td>
+              <td class="table-actions-cell">
+                <button
+                  class="action-btn edit-btn"
+                  data-id="{{ item.id }}"
+                  data-name="{{ item.name }}"
+                  data-vendor="{{ item.vendor }}"
+                  data-quantity="{{ item.quantity }}"
+                  data-price="{{ item.price }}"
+                >
+                  <i data-lucide="edit-2"></i> Edit
+                </button>
+                <button class="action-btn delete-btn" data-id="{{ item.id }}">
+                  <i data-lucide="trash-2"></i> Delete
+                </button>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="5">No items found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Add/Edit Item Modal -->
+    <div class="modal" id="itemModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Add New Item</h2>
+          <button class="close-btn" id="closeModal">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <form id="itemForm">
+          <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input type="text" id="itemName" required />
+          </div>
+          <div class="form-group">
+            <label for="itemVendor">Vendor</label>
+            <input type="text" id="itemVendor" required />
+          </div>
+          <div class="form-group">
+            <select class="form-select" id="itemType" required>
+              <option value="number" selected>Number</option>
+              <option value="kgs">Kgs</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="itemQuantity">Quantity</label>
+            <input type="number" id="itemQuantity" min="0" required />
+          </div>
+          <div class="form-group">
+            <label for="itemPrice">Price per Item (₹)</label>
+            <input type="number" id="itemPrice" min="0" step="0.01" required />
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="cancelBtn">
+              Cancel
+            </button>
+            <button type="submit" class="btn-primary">Save Item</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="{% static 'inventory.js' %}"></script>
+  </body>
+</html>
